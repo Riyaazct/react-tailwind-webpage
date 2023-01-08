@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BsDot } from "react-icons/bs";
 import {
   BsChevronCompactLeft,
@@ -25,22 +25,46 @@ const slides = [
 ];
 
 const Slider = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => {
+    const isLastSlide = currentIndex === slides.length - 1;
+    const newIndex = isLastSlide ? 0 : currentIndex + 1;
+    setCurrentIndex(newIndex);
+  };
+
+  const previousSlide = () => {
+    const isFirstSlide = currentIndex === 0;
+    const newIndex = isFirstSlide
+      ? slides.length - 1
+      : currentIndex - 1;
+    setCurrentIndex(newIndex);
+  };
+
   return (
     <div className="w-full max-w-[1400px] h-[580px] m-auto py16 px-4 relative group">
       <div
         className="w-full h-full rounded-2xl bg-cover bg-center"
-        style={{ backgroundImage: `url(${slides[0].url})` }}
+        style={{
+          backgroundImage: `url(${slides[currentIndex].url})`,
+        }}
       ></div>
 
       {/* Left Side */}
-      <div className="group-hover:bg-black/20 rounded-full p-2 text-white absolute top-[50%] translate-x-0 translate-y-[-50%] left-5 cursor-pointer text-2xl">
+      <div
+        className="group-hover:bg-black/20 rounded-full p-2 text-white absolute top-[50%] translate-x-0 translate-y-[-50%] left-5 cursor-pointer text-2xl"
+        onClick={previousSlide}
+      >
         <BsChevronCompactLeft size={30} />
       </div>
       {/* Right Side */}
-      <div className="group-hover:bg-black/20 rounded-full p-2 text-white absolute top-[50%] translate-x-0 translate-y-[-50%] right-5 cursor-pointer text-2xl">
+      <div
+        className="group-hover:bg-black/20 rounded-full p-2 text-white absolute top-[50%] translate-x-0 translate-y-[-50%] right-5 cursor-pointer text-2xl"
+        onClick={nextSlide}
+      >
         <BsChevronCompactRight size={30} />
       </div>
-      <div className="w-full flex flex-row justify-center mb-5">
+      <div className="flex justify-center top-4 py-52">
         {slides.map((e, selectedIndex) => (
           <div>
             <BsDot size={30} />
