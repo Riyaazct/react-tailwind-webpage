@@ -48,7 +48,7 @@ const Slider = () => {
   return (
     <div className="w-full max-w-[1400px] h-[580px] mx-auto py-16 px-4 relative group">
       <div
-        className="w-full h-full rounded-2xl bg-cover bg-center"
+        className="w-full h-full rounded-2xl bg-cover bg-center "
         style={{
           backgroundImage: `url(${slides[currentIndex].url})`,
         }}
@@ -68,10 +68,14 @@ const Slider = () => {
       >
         <BsChevronCompactRight size={30} />
       </div>
-      <div className="flex justify-center py-2 top-4 ">
+      <div className="flex justify-center py-3 top-4 ">
         {slides.map((e, slideIndex) => (
-          <div className="cursor-pointer text-2xl">
-            <RxDotFilled onClick={() => handleClick(slideIndex)} />
+          <div
+            key={slideIndex}
+            className="cursor-pointer text-2xl"
+            onClick={() => handleClick(slideIndex)}
+          >
+            <RxDotFilled />
           </div>
         ))}
       </div>
