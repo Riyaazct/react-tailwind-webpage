@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BsDot } from "react-icons/bs";
+import { RxDotFilled } from "react-icons/rx";
 import {
   BsChevronCompactLeft,
   BsChevronCompactRight,
@@ -41,8 +41,12 @@ const Slider = () => {
     setCurrentIndex(newIndex);
   };
 
+  const handleClick = (slideIndex) => {
+    setCurrentIndex(slideIndex);
+  };
+
   return (
-    <div className="w-full max-w-[1400px] h-[580px] m-auto py16 px-4 relative group">
+    <div className="w-full max-w-[1400px] h-[580px] mx-auto py-16 px-4 relative group">
       <div
         className="w-full h-full rounded-2xl bg-cover bg-center"
         style={{
@@ -64,10 +68,10 @@ const Slider = () => {
       >
         <BsChevronCompactRight size={30} />
       </div>
-      <div className="flex justify-center top-4 py-52">
-        {slides.map((e, selectedIndex) => (
-          <div>
-            <BsDot size={30} />
+      <div className="flex justify-center py-2 top-4 ">
+        {slides.map((e, slideIndex) => (
+          <div className="cursor-pointer text-2xl">
+            <RxDotFilled onClick={() => handleClick(slideIndex)} />
           </div>
         ))}
       </div>
