@@ -4,8 +4,8 @@ import { TiSocialPinterest } from "react-icons/ti";
 
 const Footer = () => {
   return (
-    <div className="w-full h-full bg-gray-900 text-gray-300 py-11 px-5 mt-24 ">
-      <div className="grid grid-cols-2 ">
+    <div className="w-full bg-gray-900 text-gray-300 py-11 px-5 mt-24 lg:grid lg:grid-cols-2">
+      <div className="grid grid-cols-2 lg:grid-cols-4 ">
         <div className="p-3">
           <h3 className="uppercase font-bold ">Solutions</h3>
           <p className="py-1">Travel</p>
@@ -48,10 +48,12 @@ const Footer = () => {
             inbox weekly.
           </p>
         </div>
+
+        {/* form for newsletter */}
         <div className="py-2 ">
           <form>
             <input
-              className="w-full my-4 p-2 rounded-md"
+              className="w-full my-4 p-2 rounded-md "
               type="text"
               placeholder="Enter Email.."
             />
@@ -63,7 +65,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col text-center mt-10 text-gray-500 border-t-2 border-gray-500">
+
+      {/* Social media */}
+      <div className="flex flex-col text-center mt-10 text-gray-500 border-t-2 border-gray-500 ">
         <p className="p-2 text-lg my-5 ">
           2022 Experiences, LLC. All rights reserved
         </p>
